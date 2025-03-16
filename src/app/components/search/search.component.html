@@ -10,20 +10,20 @@
   <div class="col-md-6 col-lg d-flex align-items-stretch">
     <div class="input-group shadow">
       <span class="input-group-text border-light"><i class="bi bi-cash-stack mx-2"></i>Pris&nbsp;</span>
-      <input type="text" class="form-control border-light text-center" id="lowPrice" placeholder="0"
+      <input type="number" step="100" min="0" class="form-control border-light text-center" id="lowPrice" placeholder="0"
         aria-label="Lägre gräns för pris">
       <span class="input-group-text bg-body border-light">—</span>
-      <input type="text" class="form-control border-light text-center" id="highPrice" aria-label="Övre gräns för pris"
+      <input type="number" step="100" min="0" class="form-control border-light text-center" id="highPrice" aria-label="Övre gräns för pris"
         placeholder="∞">
     </div>
   </div>
   <div class="col-md-6 col-lg d-flex align-items-stretch">
     <div class="input-group shadow">
       <span class="input-group-text border-light"><i class="bi bi-boxes mx-2"></i>Volym</span>
-      <input type="text" class="form-control border-light text-center" id="lowVolume" placeholder="0"
+      <input type="number" step="100" min="0" class="form-control border-light text-center" id="lowVolume" placeholder="0"
         aria-label="Lägre gräns för volym">
       <span class="input-group-text bg-body border-light">—</span>
-      <input type="text" class="form-control border-light text-center" id="highVolume" aria-label="Övre gräns för volym"
+      <input type="number" step="100" min="0" class="form-control border-light text-center" id="highVolume" aria-label="Övre gräns för volym"
         placeholder="∞">
     </div>
   </div>
