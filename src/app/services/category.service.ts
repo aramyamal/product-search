@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Category } from '../model/category.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class CategoryService {
       children: []
     } as Category;
 
-    const populateProducts = function (n: number) {
+    const populateProducts = function(n: number) {
       const children = [];
       for (let i = 0; i < 100000; i++) {
         children.push({
@@ -56,10 +57,4 @@ export class CategoryService {
 
     return of(sROT);
   }
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  children: Category[];
 }

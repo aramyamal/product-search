@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Product } from '../model/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -46,10 +47,4 @@ export class ProductService {
     }
     return Math.abs(hash);
   }
-}
-
-export interface Product {
-  id: string;
-  name: string;
-  extra: { [s: string]: any };
 }
