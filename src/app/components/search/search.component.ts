@@ -27,7 +27,7 @@ export class SearchComponent {
 
   toggleSortOrder() {
     const currentOrder = this.getSortOrder();
-    const newOrder = currentOrder === 'ascending' ? 'descending' : 'ascending';
+    const newOrder = currentOrder === "asc" ? "desc" : "asc";
 
     this.searchFiltersForm.patchValue({ sortOrder: newOrder });
   }

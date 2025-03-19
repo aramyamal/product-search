@@ -4,10 +4,13 @@ export interface SearchFilters {
   volumeRange: { min: number | undefined; max: number | undefined };
   productId: string;
   productCategory: string;
-  sortBy: "price" | "volume" | "stock" | "category";
-  sortOrder: "ascending" | "descending";
+  sortBy: sortByType;
+  sortOrder: sortOrderType;
   inStock: boolean;
 }
+
+export type sortByType = "price" | "volume" | "stock" | "category";
+export type sortOrderType = "asc" | "desc";
 
 export interface SearchFiltersForms {
   productName: string | null;

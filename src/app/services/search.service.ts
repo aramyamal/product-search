@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { SearchFilters, SearchFiltersForms } from '../model/search-filters.interface';
+import { SearchFilters, SearchFiltersForms, sortByType, sortOrderType } from '../model/search-filters.interface';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class SearchService {
     productId: new FormControl(""),
     productCategory: new FormControl(""),
     sortBy: new FormControl("price"),
-    sortOrder: new FormControl("ascending"),
+    sortOrder: new FormControl("asc"),
     inStock: new FormControl(false)
   });
 
@@ -27,7 +27,7 @@ export class SearchService {
     productId: "",
     productCategory: "",
     sortBy: "price",
-    sortOrder: "ascending",
+    sortOrder: "asc",
     inStock: false
   };
 
@@ -41,8 +41,22 @@ export class SearchService {
   }
 
   updateFilters(values: Partial<SearchFiltersForms>): void {
-    console.log(values)
-    console.error("Not yet implemented")
+    this.searchFilters.set({
+      productName: values.productName ? values.productName : "",
+      priceRange: {
+        min: values.lowPrice ? +values.lowPrice : 0,
+        max: values.highPrice? +values.highPrice : -1
+      },
+      volumeRange: {
+        min: values.lowVolume ? +values.lowVolume : 0,
+        max: values.highVolume ? +values.highVolume : -1
+      },
+      productId: values.productId ? values.productId : "",
+      productCategory: values.productCategory ? values.productCategory : "",
+      sortBy: values.sortBy ? values.sortBy as sortByType : "price",
+      sortOrder: values.sortOrder ? values.sortOrder as sortOrderType : "asc",
+      inStock: values.inStock === true
+    });
   }
 
   getForm() {
