@@ -1,89 +1,95 @@
-<!-- first row search -->
-<div class="row g-3">
-  <div class="col-md-12 col-lg-5">
-    <div class="form-floating shadow">
-      <input type="text" class="form-control border-light" id="productName" aria-label="Produkt namn"
-        placeholder="Produkt namn">
-      <label for="productName"><i class="bi bi-search mx-2"></i>Produktnamn</label>
-    </div>
-  </div>
-  <div class="col-md-6 col-lg d-flex align-items-stretch">
-    <div class="input-group shadow">
-      <span class="input-group-text border-light"><i class="bi bi-cash-stack mx-2"></i>Pris&nbsp;</span>
-      <input type="number" step="100" min="0" class="form-control border-light text-center" id="lowPrice" placeholder="0"
-        aria-label="Lägre gräns för pris">
-      <span class="input-group-text bg-body border-light">—</span>
-      <input type="number" step="100" min="0" class="form-control border-light text-center" id="highPrice" aria-label="Övre gräns för pris"
-        placeholder="∞">
-    </div>
-  </div>
-  <div class="col-md-6 col-lg d-flex align-items-stretch">
-    <div class="input-group shadow">
-      <span class="input-group-text border-light"><i class="bi bi-boxes mx-2"></i>Volym</span>
-      <input type="number" step="100" min="0" class="form-control border-light text-center" id="lowVolume" placeholder="0"
-        aria-label="Lägre gräns för volym">
-      <span class="input-group-text bg-body border-light">—</span>
-      <input type="number" step="100" min="0" class="form-control border-light text-center" id="highVolume" aria-label="Övre gräns för volym"
-        placeholder="∞">
-    </div>
-  </div>
-
-  <!-- toggle for search filters for small screen size -->
-  <div class="col-12 d-md-none">
-    <button id="filterToggle" class="btn btn-outline-secondary w-100" type="button" data-bs-toggle="collapse"
-      data-bs-target="#advancedSearch" aria-expanded="false" aria-controls="advancedSearch">
-      <i class="bi bi-sliders me-2"></i>Visa fler sökfilter
-    </button>
-  </div>
-</div>
-
-<!-- more search filters in collapsable for small screen size -->
-<div class="collapse d-md-block" id="advancedSearch">
-
-  <!-- second row search -->
-  <div class="row g-3 mt-0">
-    <div class="col-md-4 col-lg-4">
+<form [formGroup]="searchFiltersForm">
+  <!-- first row search -->
+  <div class="row g-3">
+    <div class="col-md-12 col-lg-5">
       <div class="form-floating shadow">
-        <input type="text" class="form-control border-light" id="productId" aria-label="Produkt-id"
-          placeholder="Produkt-id">
-        <label for="productId"><i class="bi bi-tag mx-2"></i>Produkt-id</label>
+        <input type="text" class="form-control border-light" id="productName" aria-label="Produkt namn"
+          formControlName="productName" placeholder="Produkt namn">
+        <label for="productName"><i class="bi bi-search mx-2"></i>Produktnamn</label>
       </div>
     </div>
-    <div class="col-md-8 col-lg-8">
-      <div class="form-floating shadow">
-        <input type="text" class="form-control border border-light" id="productCategory" aria-label="Kategori"
-          placeholder="Kategori">
-        <label for="anotherProductId"><i class="bi bi-archive mx-2"></i>Kategori</label>
-      </div>
-    </div>
-  </div>
-
-  <!-- third row search -->
-  <div class="row g-3 mt-0">
-    <div class="col-sm-7 col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg d-flex align-items-stretch">
       <div class="input-group shadow">
-        <label class="input-group-text border-light" for="inputGroupSelect01">Sortera efter:</label>
-        <select class="form-select border-light" id="inputGroupSelect01">
-          <option selected>Pris</option>
-          <option value="1">Volym</option>
-          <option value="2">Lager</option>
-          <option value="3">Kategori</option>
-        </select>
-        <button class="btn btn-outline-light" type="button" id="sortOrder"> <i class="bi bi-sort-up"></i><span
-            class="visually-hidden">i stigande ordning</span></button>
+        <span class="input-group-text border-light"><i class="bi bi-cash-stack mx-2"></i>Pris&nbsp;</span>
+        <input type="number" step="100" min="0" class="form-control border-light text-center" id="lowPrice"
+          formControlName="lowPrice" placeholder="0" aria-label="Lägre gräns för pris">
+        <span class="input-group-text bg-body border-light">—</span>
+        <input type="number" step="100" min="0" class="form-control border-light text-center" id="highPrice"
+          formControlName="highPrice" aria-label="Övre gräns för pris" placeholder="∞">
+      </div>
+    </div>
+    <div class="col-md-6 col-lg d-flex align-items-stretch">
+      <div class="input-group shadow">
+        <span class="input-group-text border-light"><i class="bi bi-boxes mx-2"></i>Volym</span>
+        <input type="number" step="100" min="0" class="form-control border-light text-center" id="lowVolume"
+          formControlName="lowVolume" placeholder="0" aria-label="Lägre gräns för volym">
+        <span class="input-group-text bg-body border-light">—</span>
+        <input type="number" step="100" min="0" class="form-control border-light text-center" id="highVolume"
+          formControlName="highVolume" aria-label="Övre gräns för volym" placeholder="∞">
       </div>
     </div>
 
-    <div class="col-sm-5 col-md-6 col-lg-6">
-      <div class="input-group">
-        <span class="input-group-text shadow border-light"><i class="bi bi-box-seam mx-2"></i>I lager</span>
-        <div class="input-group-text shadow border-light">
-          <input class="form-check-input mt-0" type="checkbox" value=""
-            aria-label="Checkbox för visning endast av produkter i lager">
+    <!-- toggle for search filters for small screen size -->
+    <div class="col-12 d-md-none">
+      <button id="filterToggle" class="btn btn-outline-secondary w-100" type="button" data-bs-toggle="collapse"
+        data-bs-target="#advancedSearch" aria-expanded="false" aria-controls="advancedSearch">
+        <i class="bi bi-sliders me-2"></i>Visa fler sökfilter
+      </button>
+    </div>
+  </div>
+
+  <!-- more search filters in collapsable for small screen size -->
+  <div class="collapse d-md-block" id="advancedSearch">
+
+    <!-- second row search -->
+    <div class="row g-3 mt-0">
+      <div class="col-md-4 col-lg-4">
+        <div class="form-floating shadow">
+          <input type="text" class="form-control border-light" id="productId" formControlName="productId"
+            aria-label="Produkt-id" placeholder="Produkt-id">
+          <label for="productId"><i class="bi bi-tag mx-2"></i>Produkt-id</label>
+        </div>
+      </div>
+      <div class="col-md-8 col-lg-8">
+        <div class="form-floating shadow">
+          <input type="text" class="form-control border border-light" id="productCategory"
+            formControlName="productCategory" aria-label="Kategori" placeholder="Kategori">
+          <label for="productCategory"><i class="bi bi-archive mx-2"></i>Kategori</label>
         </div>
       </div>
     </div>
-  </div>
-  <hr class="invisible my-2">
 
-</div>
+    <!-- third row search -->
+    <div class="row g-3 mt-0">
+      <div class="col-sm-7 col-md-6 col-lg-4">
+        <div class="input-group shadow">
+          <label class="input-group-text border-light" for="inputGroupSelect01">Sortera efter:</label>
+          <select class="form-select border-light" formControlName="sortBy" id="inputGroupSelect01">
+            <option value="price">Pris</option>
+            <option value="volume">Volym</option>
+            <option value="stock">Lager</option>
+            <option value="category">Kategori</option>
+          </select>
+          <button class="btn btn-outline-light" type="button" id="sortOrder" (click)="toggleSortOrder()">
+            <i
+              [class]="this.getSortOrder() === 'ascending' ? 'bi bi-sort-up' : 'bi bi-sort-down'"></i>
+
+            <span class="visually-hidden">Sort Order</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-sm-5 col-md-6 col-lg-6">
+        <div class="input-group">
+          <span class="input-group-text shadow border-light"><i class="bi bi-box-seam mx-2"></i>I lager</span>
+          <div class="input-group-text shadow border-light">
+            <input class="form-check-input mt-0" type="checkbox" id="inStock" formControlName="inStock"
+              aria-label="Checkbox för visning endast av produkter i lager">
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="invisible my-2">
+
+  </div>
+</form>
